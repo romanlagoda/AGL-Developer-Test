@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PetsComponent } from './pets.component';
 import { PeopleService } from '../../services/people.service';
-import { PetsByPersonGender } from '../../models/pets-by-person-gender'
+import { PetsByPersonGender } from '../../models/pets-by-person-gender';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 

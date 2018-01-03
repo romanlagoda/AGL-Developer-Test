@@ -1,4 +1,4 @@
-import { Pet } from './pet'
+import { Pet } from './pet';
 
 export class Person {
   name: string;

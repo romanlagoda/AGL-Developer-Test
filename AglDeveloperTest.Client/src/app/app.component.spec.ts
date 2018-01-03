@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
   selector: 'app-pets',
   template: '<div></div>'
 })
-class PetsComponentMock {
+class MockPetsComponent {
 }
 
 
@@ -15,7 +15,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        PetsComponentMock
+        MockPetsComponent
       ],
     }).compileComponents();
   }));
