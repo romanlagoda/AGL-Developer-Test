@@ -1,0 +1,6 @@
+<ng-container *ngFor="let petsGroup of petsGroups">
+  <h5>{{petsGroup.gender}}</h5>
+  <ul>
+    <li *ngFor="let pet of petsGroup.pets">{{pet.name}}</li>
+  </ul>
+</ng-container>
