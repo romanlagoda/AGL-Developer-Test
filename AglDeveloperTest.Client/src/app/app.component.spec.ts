@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 class MockPetsComponent {
 }
 
-
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({

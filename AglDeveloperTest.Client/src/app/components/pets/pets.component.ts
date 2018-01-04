@@ -14,7 +14,7 @@ export class PetsComponent implements OnInit {
   constructor(private peopleService: PeopleService) { }
 
   ngOnInit() {
-    this.peopleService.getPetsByPersonGender().subscribe(
+    this.peopleService.getCatsByPersonGender().subscribe(
       response => {
         this.petsGroups = response;
       }, error => {

@@ -5,16 +5,14 @@ import { PetsByPersonGender } from '../../models/pets-by-person-gender';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-declare var jasmine: any;
-
 describe('PetsComponent', () => {
   let component: PetsComponent;
   let fixture: ComponentFixture<PetsComponent>;
   let mockService: any;
 
   beforeEach(async(() => {
-    mockService = jasmine.createSpyObj('PeopleServiceMock', ['getPetsByPersonGender']);
-    mockService.getPetsByPersonGender.and.returnValue(Observable.of([new PetsByPersonGender()]));
+    mockService = jasmine.createSpyObj('PeopleServiceMock', ['getCatsByPersonGender']);
+    mockService.getCatsByPersonGender.and.returnValue(Observable.of([new PetsByPersonGender()]));
 
     TestBed.configureTestingModule({
       declarations: [PetsComponent],
@@ -34,6 +32,6 @@ describe('PetsComponent', () => {
   });
 
   it('should get data from server', () => {
-    expect(mockService.getPetsByPersonGender).toHaveBeenCalled();
+    expect(mockService.getCatsByPersonGender).toHaveBeenCalled();
   });
 });

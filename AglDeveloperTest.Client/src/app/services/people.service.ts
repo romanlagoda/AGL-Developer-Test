@@ -14,21 +14,22 @@ export class PeopleService {
 
   constructor(private http: HttpClient) { }
 
-  getPetsByPersonGender(): Observable<PetsByPersonGender[]> {
-    return this.http
-      .get<Person[]>('/api/people')
-      .map(people => _(people)
-        .groupBy((person: Person) => person.gender)
-        .map((value, key) => ({
-          gender: key,
-          pets: _(value)
-            .flatMap('pets')
-            .filter((pet: Pet) => pet && pet.type === 'Cat')
-            .sortBy('name')
-            .value()
-        }))
-        .value())
-      .catch(this.handleError);
+  getPeople(): Observable<Person[]> {
+    return this.http.get<Person[]>('/api/people').catch(this.handleError);
+  }
+
+  getCatsByPersonGender(): Observable<PetsByPersonGender[]> {
+    return this.getPeople().map(people => _(people)
+      .groupBy('gender')
+      .map((value, key) => ({
+        gender: key,
+        pets: _(value)
+          .flatMap('pets')
+          .filter({ type: 'Cat' })
+          .sortBy('name')
+          .value()
+      }))
+      .value());
   }
 
   private handleError(err: HttpErrorResponse) {
