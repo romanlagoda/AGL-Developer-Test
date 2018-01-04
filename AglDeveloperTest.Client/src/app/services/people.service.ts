@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import * as _ from 'lodash';
 import { Pet } from '../models/pet';
 import { Person } from '../models/person';
@@ -15,8 +16,8 @@ export class PeopleService {
 
   getPetsByPersonGender(): Observable<PetsByPersonGender[]> {
     return this.http
-      .get('/api/people')
-      .map((people: Person[]) => _(people)
+      .get<Person[]>('/api/people')
+      .map(people => _(people)
         .groupBy((person: Person) => person.gender)
         .map((value, key) => ({
           gender: key,
@@ -30,12 +31,12 @@ export class PeopleService {
       .catch(this.handleError);
   }
 
-  private handleError(error: Response | any) {
+  private handleError(err: HttpErrorResponse) {
     let errMsg: string;
-    if (error instanceof Response) {
-      errMsg = `${error.status} - ${error.statusText || ''}`;
+    if (err.error instanceof Error) {
+      errMsg = err.error.message;
     } else {
-      errMsg = error.message ? error.message : error.toString();
+      errMsg = `${err.status} - ${err.statusText || ''}`;
     }
     return Observable.throw(errMsg);
   }

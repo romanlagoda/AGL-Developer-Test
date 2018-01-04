@@ -8,15 +8,17 @@ import { PetsByPersonGender } from '../../models/pets-by-person-gender';
   styleUrls: ['./pets.component.css']
 })
 export class PetsComponent implements OnInit {
-
   petsGroups: PetsByPersonGender[];
+  errorMessage: string;
 
   constructor(private peopleService: PeopleService) { }
 
   ngOnInit() {
-    this.peopleService.getPetsByPersonGender().subscribe(response => {
-      this.petsGroups = response;
-    });
+    this.peopleService.getPetsByPersonGender().subscribe(
+      response => {
+        this.petsGroups = response;
+      }, error => {
+        this.errorMessage = error;
+      });
   }
-
 }

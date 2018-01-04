@@ -11,7 +11,7 @@ namespace AglDeveloperTest.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<IHttpClient, HttpClient>();
+            services.AddSingleton<IHttpClient, CustomHttpClient>();
             services.AddTransient<IPeopleService, PeopleService>();
         }
 
