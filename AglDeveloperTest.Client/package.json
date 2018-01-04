@@ -25,7 +25,9 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {
     "@angular/cli": "1.6.3",
