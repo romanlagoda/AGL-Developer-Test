@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  agldevelopertest.web:
+    image: agldevelopertest.web
+    build:
+      context: .
+      dockerfile: AglDeveloperTest.Web\Dockerfile
